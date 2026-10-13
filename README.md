@@ -119,3 +119,212 @@ Add Guest Details
 Payment Workflow
   ↓
 Booking Confirmation
+
+
+Cancellation follows a separate controlled workflow based on the booking state.
+🏗️ Architecture
+The application follows a layered backend architecture:
+Client
+   │
+   ▼
+REST Controllers
+   │
+   ▼
+Service Layer
+   │
+   ▼
+Repository Layer
+   │
+   ▼
+JPA / Hibernate
+   │
+   ▼
+Relational Database
+
+Main Layers
+Controller Layer
+Handles HTTP requests and exposes REST APIs.
+Service Layer
+Contains business logic such as:
+- Hotel operations
+- Room availability
+- Booking workflows
+- Pricing calculations
+- Authentication-related operations
+Repository Layer
+Handles database access through Spring Data JPA.
+Entity Layer
+Represents the application's core domain objects and database relationships.
+Security Layer
+Handles authentication, authorization and JWT-based access control.
+🔐 Security
+The application uses Spring Security with JWT-based authentication.
+The general authentication flow is:
+Login Request
+     ↓
+Authentication
+     ↓
+JWT Access Token
+     ↓
+Authorization Header
+     ↓
+Protected API
+     ↓
+Role Validation
+
+Role-based authorization is used to restrict administrative operations.
+🗄️ Database
+The application uses JPA/Hibernate for persistence.
+Supported database configurations include:
+- H2 for demonstration/development
+- MySQL for persistent database environments
+The domain is centered around entities such as:
+User
+Hotel
+Room
+Room Inventory
+Booking
+Guest Details
+Payment
+
+Relationships between these entities support hotel discovery, room availability and reservation workflows.
+💰 Dynamic Pricing
+The application includes pricing strategies that can adjust room prices according to booking conditions.
+Pricing factors include concepts such as:
+- Surge pricing
+- Holiday pricing
+- Booking urgency
+- Occupancy
+This demonstrates how business rules can be separated from the basic booking workflow.
+📖 API Documentation
+The backend provides interactive API documentation through Swagger/OpenAPI.
+After starting the application locally:
+http://localhost:8080/api/v1/swagger-ui/index.html
+
+Swagger can be used to:
+- Explore available endpoints
+- View request/response models
+- Test REST APIs
+- Understand API contracts
+- Test authenticated endpoints
+🛠️ Technology Stack
+Backend
+- Java 23
+- Spring Boot 4
+- Spring Web MVC
+- Spring Security
+- Spring Data JPA
+- Hibernate
+Database
+- MySQL
+- H2
+API
+- REST APIs
+- Swagger/OpenAPI
+- JSON
+Authentication
+- JWT
+- Spring Security
+Build & Development
+- Maven
+- Git
+- GitHub
+- IntelliJ IDEA / VS Code
+- Postman / Swagger UI
+Payment
+- Stripe integration/workflow
+📂 Project Structure
+src/
+├── main/
+│   ├── java/
+│   │   └── ...
+│   │
+│   └── resources/
+│       ├── application.properties
+│       ├── application-prod.properties
+│       └── ...
+│
+└── test/
+    └── java/
+        └── ...
+
+The source code is organized around the application's domain, controllers, services, repositories, entities, security and configuration.
+⚙️ Run Locally
+Requirements
+- JDK 23+
+- Maven 3.9+
+- MySQL (when using persistent MySQL configuration)
+- Git
+Clone
+git clone https://github.com/Mohamednabil292638/staynest-hotel-booking-platform.git
+
+Navigate to the project
+cd staynest-hotel-booking-platform
+
+Configure environment variables
+Create a local .env file based on:
+.env.example
+
+Configure the required database and authentication values.
+Run
+mvn spring-boot:run
+
+Open Swagger
+http://localhost:8080/api/v1/swagger-ui/index.html
+
+🧪 Testing
+Run the automated tests using:
+mvn test
+
+Testing is used to verify application behavior and reduce regressions while modifying the backend.
+🔍 What I Worked On
+As part of my backend engineering learning and portfolio development, I worked with this project to gain practical experience in:
+- Java backend development
+- Spring Boot application structure
+- REST API development
+- Spring Security and JWT authentication
+- Role-based authorization
+- JPA/Hibernate persistence
+- Relational database integration
+- Booking-domain business workflows
+- API testing and debugging
+- Swagger/OpenAPI documentation
+- Maven-based project management
+- Git and GitHub workflow
+Further modifications and feature improvements will be documented as they are implemented and verified.
+📈 Future Improvements
+Planned improvements include:
+- Automated integration test coverage
+- Improved API validation and error responses
+- Production database configuration
+- Containerized deployment
+- CI/CD pipeline
+- Monitoring and logging
+- Improved booking concurrency handling
+- Additional automated tests for pricing and availability
+👨‍💻 Developer
+Mohamed Nabil S
+B.Tech — Artificial Intelligence & Data Science
+Bengaluru, India
+GitHub:
+https://github.com/Mohamednabil292638
+LinkedIn:
+https://www.linkedin.com/in/mohamed-nabil-s-950104308/
+📌 Project Status
+Status: Active Development
+The project is being studied, configured, tested and extended as part of my Java/Spring Boot backend engineering portfolio.
+📄 Attribution & License
+Original project attribution and applicable license information are retained in the repository.
+This repository is being used as a learning and portfolio project, with modifications and extensions documented as they are implemented.
+
+### One correction before you paste it
+
+I deliberately **didn't put “Built from scratch by Mohamed Nabil S”** or claim that every feature is your original implementation.
+
+That's important because your goal is eventually to put this project on your resume and discuss it confidently in interviews. As we actually **modify, debug, test, and extend the application**, we can progressively replace the generic section with your **real contributions**.
+
+Also, don't add a fake live-demo link yet. Once **we actually deploy your version**, we'll add:
+
+```text
+🌐 Live Demo
+📖 Swagger API
