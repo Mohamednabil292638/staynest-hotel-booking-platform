@@ -1,0 +1,31 @@
+# Copyright (c) 2026 Anshul Negi
+# GitHub: https://github.com/NegiCoder
+# Unauthorized copying, modification, or distribution of this file
+# without explicit permission is prohibited.
+
+services:
+  - type: web
+    name: hotel-booking-api
+    runtime: docker
+    plan: free
+    region: singapore
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/v1/swagger-ui/index.html
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: APP_DEMO_SEED
+        value: "true"
+      - key: SPRING_DATASOURCE_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: STRIPE_SECRET_KEY
+        value: sk_test_demo
+      - key: STRIPE_WEBHOOK_SECRET
+        value: whsec_demo
